@@ -9,4 +9,4 @@ RUN pip3 install -r requirements.txt
 ENV PORT = 8080
 EXPOSE 8080
 
-RUN python run.py
+CMD start.sh
