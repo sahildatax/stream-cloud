@@ -6,4 +6,4 @@ class Config:
     CHANNEL = eval("-1001757403524")
     CHANNEL_USERNAME = "sahil_nolia"
     TOKEN = "5151415399:AAEFBBOnPSaWVqpABEolz3SeKIfPjg-dt8Y"
-    DOMAIN  = "https://stream-cloud-production-abb8.up.railway.app"
+    DOMAIN  = "https://streamy.up.railway.app"
