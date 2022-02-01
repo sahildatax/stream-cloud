@@ -1,3 +1,4 @@
+from telethon import Button
 from telethon import events,functions,errors
 from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
@@ -49,7 +50,13 @@ async def download(event):
             bot_url = f"t.me/{username_bot}?start={id_hex}"
             streambotxx = str("https://upx.nolia.repl.co/index.php?")
             streamback = str("?sahilnoliabot")
-            await event.reply(f"Filename 💽: {event.message.file.name}\n\n\nLinks 🔗:\n\n      📺 [Stream Link]({streambotxx}{Config.DOMAIN}/{id}{streamback}) 📺\n\n      🤖 [Backup Link]({bot_url}) 🤖")
+            await event.reply(f" ᠌ ᠌᠌᠌᠌᠌\n💽 Filename :  {event.message.file.name}\n ᠌ ", link_preview=False, buttons=(
+      [
+        Button.url('🤖 Backup Link', f'{bot_url}'),
+        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id}{streamback}')
+      ]
+    )
+  )
             return
 
         elif id_msg := re.search("/start (.*)", event.raw_text ):
@@ -72,16 +79,39 @@ async def download(event):
                         bot_url = f"t.me/{username_bot}?start={id_hex}"
                         streambotxx = str("https://upx.nolia.repl.co/index.php?")
                         streamback = str("?sahilnoliabot")
-                        forward_reply = await forward.reply(f"will be deleted in 21 seconds. \n\nFilename 💽: {get_file_name(msg)}\n\n\nLinks 🔗:\n\n      📺 [Stream Link]({streambotxx}{Config.DOMAIN}/{id_name}{streamback}) 📺\n\n      🤖 [Backup Link]({bot_url}) 🤖",link_preview=False)
+                        forward_reply = await forward.reply(f"will be deleted in 21 seconds. \n\n💽 Filename :  {get_file_name(msg)}\n ᠌ ", link_preview=False, buttons=(
+      [
+        Button.url('🤖 Backup Link', f'{bot_url}'),
+        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id_name}{streamback}')
+      ]
+    )
+  )
                         await asyncio.sleep(12)
-                        await forward_reply.edit(f"will be deleted in 10 seconds. \n\nFilename 💽: {get_file_name(msg)}\n\n\nLinks 🔗:\n\n      📺 [Stream Link]({streambotxx}{Config.DOMAIN}/{id_name}{streamback}) 📺\n\n      🤖 [Backup Link]({bot_url}) 🤖")
+                        await forward_reply.edit(f"will be deleted in 10 seconds. \n\n💽 Filename :  {get_file_name(msg)}\n ᠌ ", link_preview=False, buttons=(
+      [
+        Button.url('🤖 Backup Link', f'{bot_url}'),
+        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id_name}{streamback}')
+      ]
+    )
+  )
                         await asyncio.sleep(10)
                         await forward.delete()
-                        await forward_reply.edit(f"Filename 💽: {get_file_name(msg)}\n\n\nLinks 🔗:\n\n      📺 [Stream Link]({streambotxx}{Config.DOMAIN}/{id_name}{streamback}) 📺\n\n      🤖 [Backup Link]({bot_url}) 🤖",link_preview=True)
+                        await forward_reply.edit(f" ᠌ ᠌᠌᠌᠌᠌\n💽 Filename :  {get_file_name(msg)}\n ᠌ ", link_preview=False, buttons=(
+      [
+        Button.url('🤖 Backup Link', f'{bot_url}'),
+        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id_name}{streamback}')
+      ]
+    )
+  )
                 return
         
         if pv:
-            await event.reply(f"Send any file and get a link to stream or download.\n\nBot by [Sahil Nolia](https://t.me/sahil_nolia)")
+            await event.reply(f"Send any file and get a link to stream or download.", link_preview=True, buttons=(
+      [
+        Button.url('⭐ Bot By Sahil Nolia ⭐', 'https://t.me/sahil_nolia')
+      ]
+    )
+  )
         
 
     elif event.is_channel:
