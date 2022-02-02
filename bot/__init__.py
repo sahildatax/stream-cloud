@@ -24,6 +24,7 @@ client = TelegramClient(
             ).start(bot_token=Config.TOKEN)
 
 username_bot = client.get_me().username
+dmx = Config.DOMAIN.replace('https://', '')
 
 def get_file_name(message):
     if message.file.name:
@@ -48,12 +49,10 @@ async def download(event):
             id_hex = hex(msg.id)[2:]
             id = f"{id_hex}/{get_file_name(msg)}"
             bot_url = f"t.me/{username_bot}?start={id_hex}"
-            streambotxx = str("https://upx.nolia.repl.co/index.php?")
-            streamback = str("?sahilnoliabot")
             await event.reply(f" ᠌ ᠌᠌᠌᠌᠌\n💽 Filename :  {event.message.file.name}\n ᠌ ", link_preview=False, buttons=(
       [
         Button.url('🤖 Backup Link', f'{bot_url}'),
-        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id}{streamback}')
+        Button.url('📺 Stream Link', f'{Config.DOMAIN}/stream/{dmx}/{id}')
       ]
     )
   )
@@ -77,12 +76,10 @@ async def download(event):
                         forward = await file.forward_to(event.chat_id)
                         id_name = f"{id_hex}/{get_file_name(msg)}"
                         bot_url = f"t.me/{username_bot}?start={id_hex}"
-                        streambotxx = str("https://upx.nolia.repl.co/index.php?")
-                        streamback = str("?sahilnoliabot")
                         forward_reply = await forward.reply(f"will be deleted in 21 seconds. \n\n💽 Filename :  {get_file_name(msg)}\n ᠌ ", link_preview=False, buttons=(
       [
         Button.url('🤖 Backup Link', f'{bot_url}'),
-        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id_name}{streamback}')
+        Button.url('📺 Stream Link', f'{Config.DOMAIN}/stream/{dmx}/{id_name}')
       ]
     )
   )
@@ -90,7 +87,7 @@ async def download(event):
                         await forward_reply.edit(f"will be deleted in 10 seconds. \n\n💽 Filename :  {get_file_name(msg)}\n ᠌ ", link_preview=False, buttons=(
       [
         Button.url('🤖 Backup Link', f'{bot_url}'),
-        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id_name}{streamback}')
+        Button.url('📺 Stream Link', f'{Config.DOMAIN}/stream/{dmx}/{id_name}')
       ]
     )
   )
@@ -99,7 +96,7 @@ async def download(event):
                         await forward_reply.edit(f" ᠌ ᠌᠌᠌᠌᠌\n💽 Filename :  {get_file_name(msg)}\n ᠌ ", link_preview=False, buttons=(
       [
         Button.url('🤖 Backup Link', f'{bot_url}'),
-        Button.url('📺 Stream Link', f'{streambotxx}{Config.DOMAIN}/{id_name}{streamback}')
+        Button.url('📺 Stream Link', f'{Config.DOMAIN}/stream/{dmx}/{id_name}')
       ]
     )
   )
